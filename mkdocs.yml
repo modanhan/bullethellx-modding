@@ -1,0 +1,10 @@
+site_name: Bullethell X
+
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: mkdocs
+  color_mode: dark
+  nav_style: dark
+  user_color_mode_toggle: color_mode
