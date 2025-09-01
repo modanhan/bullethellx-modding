@@ -1,23 +1,38 @@
-# Welcome to MkDocs
+# Bullethell X Modding and Scripting Guide
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Welcome to modding in Bullethell X!
 
-!!! note
+This guide will walk you through creating mods, using the scripting interface, and exploring a few advanced techniques.
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-    
-## Commands
+<iframe src="https://store.steampowered.com/widget/764420/"
+frameborder="0" width="646" height="190" style="color-scheme:asdf"
+></iframe>
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Modding Workflow
 
-## Project layout
+Bullethell X loads mods from two sources:
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+1. Steam Workshop – for published mods.
+2. Local Mods – located in `bx/mods`. This is where you’ll be working during development.
+
+To get started, place your mod files in the `bx/mods` folder, and the game will automatically detect them.
+
+## Enabling Local Mods
+
+- Open the in-game Settings menu.
+
+- Ensure Local Mods are enabled.
+
+- (Optional) Disable Steam Workshop mods while developing, so they don’t interfere with your work.
+
+!!! tip
+
+    Press F5 at any time (even during gameplay) to instantly reload your mods!
+
+## Publishing Your Mod
+
+Once your mod is ready:
+
+- Use `steamcmd` to upload your mod. (In-game uploading is currently in development.)
+
+- After publishing, players can subscribe to your mod on the Steam Workshop and enjoy it directly in their game.
