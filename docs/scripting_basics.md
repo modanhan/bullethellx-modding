@@ -18,10 +18,10 @@ Engine.destroyComponent(eid, "Health")                     -- OK (3)
 Engine.createComponent(eid, "Health", {hp = 3, maxHP = 5}) -- OK (4)
 ```
 
-1. health is 5/5
-2. Does nothing (already has Health)
-3. Removes the Health component
-4. Health is now 3/5
+1. health is 5/5.
+2. Does nothing (already has a Health component).
+3. Removes the Health component.
+4. Health is now 3/5.
 
 ## Components
 
@@ -52,7 +52,7 @@ check for collisions against entities with `Position`, `Radius`, and `Bullet`.
 If they overlap, subtract the bullet’s damage from `Health`.
 If `hp <= 0`, destroy the entity.
 
-## Example: Clamping Health to maxHP
+## Sample Implementation: Clamping Health
 
 ```lua
 local es = Engine.entities("Health")               -- (1)

@@ -3,11 +3,14 @@ site_name: Bullethell X Modding Guide
 nav:
   - Home: index.md
   - Getting Started:
-    - Creating a First Boss: getting_started.md
+    - Modding Workflow: workflow.md
+    - Creating a First Boss: first_boss.md
     - Making some Tweaks: making_tweaks.md
   - Scripting Basics:
     - Entity Component System: scripting_basics.md
     - The Engine Interface: engine_interface.md
+    - Struct Definitions: structs.md
+    - Special Structs: special_structs.md
 theme:
   name: material
   palette:
@@ -44,8 +47,6 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify
@@ -53,6 +54,8 @@ markdown_extensions:
           case: lower
   - attr_list
   - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.superfences
 
 extra:

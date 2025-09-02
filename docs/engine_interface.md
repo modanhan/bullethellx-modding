@@ -40,6 +40,10 @@ Engine.createComponent(eid, "Health",
 
 </div>
 
+!!! tip "Important!"
+    When creating a component, all of its fields must be defined!
+    To see which fields a component has, see `structs.dsl`!
+
 ## Engine.entities
 
 ``` lua title="entities"
@@ -61,6 +65,11 @@ local es = Engine.entities("NonExistentGibberish") -- BAD (3)
 3. Can **NOT** get components that don't exist!
 
 </div>
+
+!!! tip
+    You can specify any number of components!
+    This function will return a list of entities that have all of the components.
+    If no such entity exists, an empty list is returned.
 
 ## Engine.component
 
@@ -84,6 +93,14 @@ end
 1. Guaranteed to exist! (Because we queried entities with Health)
 
 </div>
+
+!!! tip
+    If you call `component()` immediately on an entity from a list returned by `entities()`
+    (where the component is one of the arguments),
+    the requested component is guaranteed to exist.
+
+    Otherwise, you can use `component()` to test whether a component exists
+    by checking the result being `nil`.
 
 ## Engine.update
 
@@ -115,6 +132,9 @@ end
 
 </div>
 
+!!! tip "Important!"
+    Similar to `createComponent()`, all of its fields must be defined!
+
 ## Engine.destroyComponent
 
 ``` lua title="destroyComponent"
@@ -129,11 +149,15 @@ Engine.destroyComponent = function(eid, t)
 local es = Engine.entities("IFrame", "Enemy")
 for i = 1, #es do
     local eid = es[i]
-    Engine.destroyComponent(eid, "IFrame") -- OK (1)
+    Engine.destroyComponent(eid, "IFrame")       -- OK  (1)
+    Engine.destroyComponent(eid, "IFrame")       -- ??  (2)
+    Engine.destroyComponent(eid, "DoesNotExist") -- BAD (3)
 end
 ```
 
-1. Destroy all enemy `IFrames`
+1. Destroy all enemy `IFrames`.
+2. `IFrames` is already destroyed, does nothing.
+3. `DoesNotExist` is not a struct, game will crash.
 
 </div>
 
@@ -150,10 +174,16 @@ Engine.destroyEntity = function(eid)
 local es = Engine.entities("Enemy")
 for i = 1, #es do
     local eid = es[i]
-    Engine.destroyEntity(eid) -- OK (1)
+    Engine.destroyEntity(eid)                -- OK (1)
+    Engine.destroyEntity(eid)                -- ?? (2)
+    Engine.destroyComponent(eid, "Enemy")    -- ?? (3)
+    Engine.createComponent(eid, "Enemy", {}) -- ?? (4)
 end
 ```
 
 1. Destroy all enemies (and associated components)!
+2. Does nothing, the first `destroyEntity()` invalidates `eid`.
+3. Does nothing, `eid` is already invalid.
+4. Does nothing, `eid` is already invalid.
 
 </div>

@@ -1,26 +1,28 @@
-# Getting Started
+# Creating a First Boss
 
-In this section, we’ll create a simple boss, load it into the game, make a small change, and then hot-reload it to see the results.
+In this section, we’ll create a simple boss, load it into the game,
+make a small change, and then hot-reload it to see the results.
 
 ## Step 1: Create Your Mod Folder
 
-Create a new folder inside `bx/mods`. This is where all your files will live. For example:
+Create a new folder inside `bx/mods`. This is where all your files will live.
+For example:
 
-``` { .yaml .copy }
+``` text
 bx/mods/my_mod
 ```
 
 ## Step 2: Write Your First Boss Script
 
-Create a new Lua script, e.g.:
+Create a new Lua script, e.g.
 
-``` { .yaml .copy }
+``` text
 bx/mods/my_mod/new_boss.lua
 ```
 
 Paste the following code into the file:
 
-``` lua { .yaml .copy title="bx/mods/my_mod/new_boss.lua" linenums="1" }
+``` lua { .copy title="bx/mods/my_mod/new_boss.lua" linenums="1" }
 require("bx.scripts.engine")
 require("bx.scripts.utils")
 require("bx.scripts.helpers")
