@@ -68,5 +68,8 @@ extra:
       # link: https://www.instagram.com/aeroboxgames?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
     - icon: fontawesome/brands/discord
       # link: https://www.instagram.com/aeroboxgames?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
+      
+extra_css:
+  - stylesheets/extra.css
 
 copyright: Copyright &copy; 2020 - 2025 Aerobox Games

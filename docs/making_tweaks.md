@@ -51,5 +51,7 @@ Experiment with a few more tweaks to see how they change the gameplay! Here are 
     end
     ```
 
-Now that you’ve got the basics of the modding workflow down,
-let’s jump into scripting and see how much more you can do.
+Once you're happy with your customization of the first boss,
+let's go upload this mod onto Steam as a Workshop Item!
+
+You can choose to to keep it private!

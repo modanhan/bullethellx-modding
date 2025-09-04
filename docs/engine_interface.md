@@ -68,7 +68,7 @@ local es = Engine.entities("NonExistentGibberish") -- BAD (3)
 
 !!! tip
     You can specify any number of components!
-    This function will return a list of entities that have all of the components.
+    This function will return a list of entities that have **all of the components**.
     If no such entity exists, an empty list is returned.
 
 ## Engine.component
