@@ -1,4 +1,4 @@
-# Creating a First Boss
+# Create a First Boss
 
 In this section, we’ll create a simple boss, load it into the game,
 make a small change, and then hot-reload it to see the results.

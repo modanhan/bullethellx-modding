@@ -102,6 +102,10 @@ Engine.destroyMetadata = function(eid)
     Together with Function, they are used to achieve arbitrary logic on specific entities!
     This is the single most scriptable and powerful component of *Bullethell X*'s modding system.
 
+!!! info
+    Metadata currently supports up to 64 fields.
+    Each instance is 12.8 KB, making it the largest struct in the game.
+
 ## Ad-hoc
 
 ### Trail
@@ -109,7 +113,7 @@ Engine.destroyMetadata = function(eid)
 Most bullets benefit from a trail visual component, to create this component manually,
 use the `Engine.createTrail` function:
 
-```lua  hl_lines="7"
+``` lua  hl_lines="7"
 -- Create a trail visual
 --- @param eid integer
 --- @param detail integer
@@ -120,8 +124,8 @@ Engine.createTrail = function(eid, detail, opacity, widthScale, cd)
 ```
 
 <div class="result" markdown>
-```lua title="Sample Usage in Helper.fireStandardBulletBoss" hl_lines="13"
 
+``` lua title="Sample Usage in Helper.fireStandardBulletBoss" hl_lines="13"
 local bulletEid = Engine.createEntity()
 Engine.createComponent(bulletEid, "Color", ... )
 Engine.createComponent(bulletEid, "Position", ... )
@@ -136,7 +140,9 @@ Engine.createComponent(bulletEid, "Bullet", {
 Engine.createComponent(bulletEid, "FactionEnemy", {})
 Engine.createTrail(bulletEid, 8, 0.5, 1, Engine.dt * 2)
 return bulletEid
-
 ```
 
 </div>
+
+!!! info
+    Trail has no accessible/modifiable data! It is merely a visual effect.

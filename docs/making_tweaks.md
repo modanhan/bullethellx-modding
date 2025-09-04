@@ -1,4 +1,4 @@
-# Making some Tweaks
+# Customize the Boss
 
 Experiment with a few more tweaks to see how they change the gameplay! Here are some ideas to get you started...
 

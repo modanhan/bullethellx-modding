@@ -11,16 +11,14 @@ To get started, place your mod files in the `bx/mods` folder, and the game will 
 
 ## Enabling Local Mods
 
-- Open the in-game Settings menu.
+- Open the in-game *Settings* menu.
 
-- Ensure Local Mods are enabled.
+- Ensure *Local Mods* are enabled.
 
 - (Optional) Disable Steam Workshop mods while developing, so they don’t interfere with your work.
 
 ## Publishing Your Mod
 
-Once your mod is ready:
+Once your mod is ready, simply use the in-game uploader!
 
-- Use `steamcmd` to upload your mod. (In-game uploading is currently in development.)
-
-- After publishing, players can subscribe to your mod on the Steam Workshop and enjoy it directly in their game.
+After publishing, players can subscribe to your mod on the Steam Workshop and enjoy it directly in their game.
