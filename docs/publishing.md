@@ -11,8 +11,9 @@ By submitting items, you agree to the [workshop terms of service](https://steamc
 - Browse the menu and find the mod you just created. Hit Enter.
 
 !!! note
-    The default name of the mod is the name of the folder!
-    If you wish to edit the name, you may do so via Steam's interface after the mod is uploaded.
+    The default display name of the mod is the name of the folder!
+    If you wish to edit the display name, you may do so via Steam's interface
+    **after the mod is uploaded**.
 
 - If you have not yet accpeted the agreement, there is an option to do so now
 (it'll open up the Steam overlay).
@@ -21,7 +22,8 @@ By submitting items, you agree to the [workshop terms of service](https://steamc
 - The upload process should begin now, note this can take a few seconds.
 
 - If this is successful, the menu item should now say "Update Steam Item"
-and a Steam page should open up allowing you to view your mod and edit its details.
+and a Steam page should open up allowing you to view your mod and edit its details
+(edit the name, description, upload a preview image, etc.).
 
 !!! success
     Congratulations! Your item is now uploaded to Steam.

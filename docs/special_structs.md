@@ -12,7 +12,7 @@ struct Function {
 `Function` is a simple defined struct, however the `name` field is required to be a ***global function*** in Lua!
 This function must have exactly 1 parameter that is the entity ID which the function acts on.
 
-E.g.
+### Example
 
 ```lua
 
@@ -44,6 +44,14 @@ Engine.createComponent(eid, "Function", {name="DreamFunction"})      -- OK  (5)
 3. `justALocalFunction` is not accessible, game will crash.
 4. `DreamFunction` does not exist, game will crash.
 5. Global functions in other files are accessible as long as they're loaded.
+
+!!! important
+    `Function` is designed for entities that have truly unique behaviors and are small in number,
+    e.g. bosses and players.
+
+    Running a custom script on a large number entities is slow, even if the function is simple.
+    If you attach `Function` to bullets and there is a massive number of bullets,
+    the game will most likely lag.
 
 ## Metadata
 
@@ -104,7 +112,8 @@ Engine.destroyMetadata = function(eid)
 
 !!! info
     Metadata currently supports up to 64 fields.
-    Each instance is 12.8 KB, making it the largest struct in the game.
+    Each Metadata instance is 12.8 KB, making it the largest struct in the game.
+    If there are 10,000 entities with Metadata, the memory footprint is 128 MB.
 
 ## Ad-hoc
 
