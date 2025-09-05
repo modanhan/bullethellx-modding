@@ -144,5 +144,8 @@ return bulletEid
 
 </div>
 
+!!! important
+    `detail` is at most `8` and at least `1`!
+
 !!! info
     Trail has no accessible/modifiable data! It is merely a visual effect.

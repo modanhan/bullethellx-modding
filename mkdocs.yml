@@ -4,9 +4,9 @@ nav:
   - Home: index.md
   - Getting Started:
     - Modding Workflow: workflow.md
-    - Create a First Boss: first_boss.md
-    - Customize the Boss: making_tweaks.md
-    - Publish the Mod: publishing.md
+    - Creating a Boss: first_boss.md
+    - Customizing the Boss: making_tweaks.md
+    - Publishing the Mod: publishing.md
   - Scripting Basics:
     - Entity Component System: scripting_basics.md
     - The Engine Interface: engine_interface.md

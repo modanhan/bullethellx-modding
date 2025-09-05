@@ -1,4 +1,4 @@
-# Create a First Boss
+# Creating a Boss
 
 In this section, we’ll create a simple boss, load it into the game,
 make a small change, and then hot-reload it to see the results.
@@ -11,6 +11,10 @@ For example:
 ``` text
 bx/mods/my_mod
 ```
+
+!!! important
+    Folder names can NOT have spaces (or most special characters).
+    We recommend sticking to names using only letters, numbers, and underscore.
 
 ## Step 2: Write Your First Boss Script
 
