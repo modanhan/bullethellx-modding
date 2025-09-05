@@ -12,6 +12,8 @@ nav:
     - The Engine Interface: engine_interface.md
     - Struct Definitions: structs.md
     - Special Structs: special_structs.md
+  - Advanced Techniques: 
+    - AsyncFunctions: async.md
 theme:
   name: material
   palette:
