@@ -74,4 +74,7 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
+plugins:
+  - social
+  
 copyright: Copyright &copy; 2020 - 2025 Aerobox Games
