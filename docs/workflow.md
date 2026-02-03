@@ -16,7 +16,7 @@ To get started, place your mod files in the `bx/mods` folder, and the game will 
 
 - You should see on the top left: `Developer Mode: Local Mods Enabled`.
 
-- (Optional) Press `Backspace` to toggle mod settings.
+- (Optional) Press `Backspace` again to keep toggling mod settings.
 It is recommended to disable Steam Workshop mods while developing,
 so they don’t interfere with your work.
 

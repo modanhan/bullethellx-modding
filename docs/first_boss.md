@@ -3,115 +3,39 @@
 In this section, we’ll create a simple boss, load it into the game,
 make a small change, and then hot-reload it to see the results.
 
-## Step 1: Create Your Mod Folder
+## Step 1: Download the example
 
-Create a new folder inside `bx/mods`. This is where all your files will live.
-For example:
+Click here to download
+[getting_started_mod.zip](getting_started_mod.zip){:download},
+extract the zip and move the `getting_started_mod` folder under `bx/mods`.
 
-``` text
-bx/mods/my_mod
-```
+## Step 2: Inspect Boss Script
 
-!!! important
-    Folder names can NOT have spaces (or most special characters).
-    We recommend sticking to names using only letters, numbers, and underscore.
-
-## Step 2: Write Your First Boss Script
-
-Create a new Lua script, e.g.
-
-``` text
-bx/mods/my_mod/new_boss.lua
-```
-
-Paste the following code into the file:
-
-``` lua { .copy title="bx/mods/my_mod/new_boss.lua" linenums="1" }
-require("bx.scripts.engine")
-require("bx.scripts.utils")
-require("bx.scripts.helpers")
-
-local function attack(eid, meta)
-    local speed = fp(0.45)
-    local v = meta.rot * Vec2.new(0, speed)
-
-    Helper.fireStandardBulletBoss({
-        firedBy = eid,
-        position = Engine.component(eid, "Position").position,
-        velocity = v * speed,
-        radius = fp(0.015),
-    })
-end
-
-local function update(eid)
-    if Engine.component(eid, "BossEntrance") then
-        return
-    end
-    local health = Engine.component(eid, "Health")
-    if not health or health.hp <= 0 then
-        return
-    end
-
-    local meta = Engine.component(eid, "Meta").meta
-
-    if not meta.attackTime then
-        meta.attackTime = fp(0)
-    end
-    if not meta.rot then
-        meta.rot = Mat2.new(1)
-    end
-    meta.attackTime = meta.attackTime + Engine.dt
-    local theta = fp(Engine.dt * fp(1.5))
-    meta.rot = Mat2.rotate(theta) * meta.rot
-    if meta.attackTime >= meta.attackCD then
-        meta.attackTime = fp(0)
-        attack(eid, meta)
-    end
-
-    if not meta.t then
-        meta.t = fp(0)
-    end
-    meta.t = meta.t - Engine.dt * fp(2.1)
-
-    Engine.update(eid, "Meta", { meta = meta })
-end
-
-local function create(difficulty)
-    local e = Helper.createStandardBoss({ difficulty = difficulty })
-    local attackCD = fpmath.clamp(fp(0.2) - fp(0.01) * difficulty, fp(0.1), fp(0.2))
-    Engine.createComponent(e, "Meta", { meta = { attackCD = attackCD } })
-    return e
-end
-
-return {
-    boss = {
-        name = "New Boss",
-        create = create,
-        update = update,
-    }
-}
-```
+You should now have `bx/mods/getting_started_mod/example_boss/boss.lua`,
+this is where most of the logic lives!
 
 ## Step 3: Load Your Mod In-Game
 
 1. Launch the game.
-2. Open Settings and make sure:
-   - **Local Mods** are *ENABLED*
-   - **Steam Workshop Mods** are *DISABLED*
+2. Press *Backspace* to toggle mod settings and make sure:
+    - **Local Mods** are *ENABLED*.
+    - **Steam Workshop Mods** are *DISABLED*.
+    - You can see these settings on the top left corner.
 3. Start a singleplayer game. You should see your new boss performing its basic attack pattern.
 
 ## Step 4: Make a Live Change
 
-Open `new_boss.lua` again (you can do this while the game is running) and edit line 6:
+Open `boss.lua` (you can do this while the game is running!) and edit line 44:
 
-```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="6 6" }
-- local speed = fp(0.45)
-+ local speed = fp(0.75)
+```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="44 44" }
+-     meta.t = meta.t + dt * fp(0.7)
++     meta.t = meta.t + dt * fp(1.4)
 ```
 
 ## Step 5: Hot Reload Your Mod
 
-Switch back to the game and press F5. Your boss will now fire bullets at a faster speed.
+Switch back to the game and press **F5** - this hot reloads the scripts.
+Your boss should now have a much higher attack speed.
 
 !!! success
     **Congratulations!** You’ve just completed the basic Bullethell X modding workflow.
