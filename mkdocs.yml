@@ -1,4 +1,5 @@
 site_name: Bullethell X Modding Guide
+site_url: https://modanhan.github.io/bullethellx-modding/
 
 nav:
   - Home: index.md
