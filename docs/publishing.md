@@ -15,7 +15,7 @@ By submitting items, you agree to the [workshop terms of service](https://steamc
     If you wish to edit the display name, you may do so via Steam's interface
     **after the mod is uploaded**.
 
-- If you have not yet accpeted the agreement, there is an option to do so now
+- If you have not yet accepted the agreement, there is an option to do so now
 (it'll open up the Steam overlay).
 - Select "Create Steam Item", hit Enter!
 

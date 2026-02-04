@@ -6,6 +6,7 @@ nav:
     - Modding Workflow: workflow.md
     - Creating a Boss: first_boss.md
     - Customizing the Boss: making_tweaks.md
+    - Running Commands: running_commands.md
     - Publishing the Mod: publishing.md
   - Scripting Basics:
     - Entity Component System: scripting_basics.md
