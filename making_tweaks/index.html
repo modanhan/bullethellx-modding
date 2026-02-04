@@ -484,36 +484,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#firing-angle" class="md-nav__link">
+  <a href="#adjust-bullet-radius" class="md-nav__link">
     <span class="md-ellipsis">
-      Firing Angle
+      Adjust Bullet Radius
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bullet-radius" class="md-nav__link">
+  <a href="#randomize-bullet-radius" class="md-nav__link">
     <span class="md-ellipsis">
-      Bullet Radius
+      Randomize Bullet Radius
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attack-speed" class="md-nav__link">
+  <a href="#adjust-multishot" class="md-nav__link">
     <span class="md-ellipsis">
-      Attack Speed
+      Adjust Multishot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#multishot" class="md-nav__link">
+  <a href="#adjust-bullet-speed" class="md-nav__link">
     <span class="md-ellipsis">
-      Multishot
+      Adjust Bullet Speed
     </span>
   </a>
   
@@ -702,6 +702,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ad_hoc_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ad-hoc Structs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -809,36 +832,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#firing-angle" class="md-nav__link">
+  <a href="#adjust-bullet-radius" class="md-nav__link">
     <span class="md-ellipsis">
-      Firing Angle
+      Adjust Bullet Radius
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bullet-radius" class="md-nav__link">
+  <a href="#randomize-bullet-radius" class="md-nav__link">
     <span class="md-ellipsis">
-      Bullet Radius
+      Randomize Bullet Radius
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#attack-speed" class="md-nav__link">
+  <a href="#adjust-multishot" class="md-nav__link">
     <span class="md-ellipsis">
-      Attack Speed
+      Adjust Multishot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#multishot" class="md-nav__link">
+  <a href="#adjust-bullet-speed" class="md-nav__link">
     <span class="md-ellipsis">
-      Multishot
+      Adjust Bullet Speed
     </span>
   </a>
   
@@ -871,66 +894,32 @@
 
 <h1 id="customizing-the-boss">Customizing the Boss</h1>
 <p>Experiment with a few more tweaks to see how they change the gameplay! Here are some ideas to get you started...</p>
-<h2 id="firing-angle">Firing Angle</h2>
+<h2 id="adjust-bullet-radius">Adjust Bullet Radius</h2>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="gd">-   local theta = fp(Engine.dt * fp(1.5))</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="gi">+   local theta = fp(Engine.dt * fp(25))</span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="gd">-       fire(eid, pos, v * speed, fp(0.02))</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="gi">+       fire(eid, pos, v * speed, fp(0.04))</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="bullet-radius">Bullet Radius</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  </span>
+<h2 id="randomize-bullet-radius">Randomize Bullet Radius</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-35">35</a></span>
 <span class="normal">  </span>
-<span class="normal">  </span>
-<span class="normal">  </span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal">  </span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w"> </span>   Helper.fireStandardBulletBoss({
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w"> </span>       firedBy = eid,
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w"> </span>       position = Engine.component(eid, &quot;Position&quot;).position,
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w"> </span>       velocity = v * speed,
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="gd">-       radius = fp(0.015),</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="gi">+       radius = fp(0.005),</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w"> </span>   })
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="gd">-       fire(eid, pos, v * speed, fp(0.02))</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="gi">+       local radius = Mix(fp(0.02), fp(0.08), meta.rng:nextFP())</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="gi">+       fire(eid, pos, v * speed, radius)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="attack-speed">Attack Speed</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-34">34</a></span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="gd">-   meta.attackTime = meta.attackTime + Engine.dt</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="gi">+   meta.attackTime = meta.attackTime + Engine.dt * 5</span>
+<h2 id="adjust-multishot">Adjust Multishot</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="gd">-    local radialCount = 18</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="gi">+    local radialCount = 24</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="multishot">Multishot</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-5" name="__codelineno-3-5"></a>local function attack(eid, meta)
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w"> </span>   local speed = fp(0.75)
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w"> </span>   local v = meta.rot * Vec2.new(0, speed)
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="gi">+   local n = 5</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="gi">+   local rot = Mat2.rotate(fpmath.pi * fp(2) / fp(5))</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="gi">+   for _ = 1, n do</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="gi">+       v = rot * v</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w"> </span>       Helper.fireStandardBulletBoss({
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w"> </span>           firedBy = eid,
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w"> </span>           position = Engine.component(eid, &quot;Position&quot;).position,
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w"> </span>           velocity = v * speed,
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w"> </span>           radius = fp(0.015),
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w"> </span>       })
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="gi">+   end</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a>end
+<h2 id="adjust-bullet-speed">Adjust Bullet Speed</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="gd">-    local speed = fp(0.35)</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="gi">+    local speed = fp(0.55)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="next-steps">Next Steps</h2>
 <div class="admonition hint">
 <p class="admonition-title">Challenge</p>
-<p>Can you make more changes to create a truly unique attack pattern?</p>
+<p>Can you make more changes to create a unique attack pattern?</p>
 </div>
 <p>Once you're happy with your customization of the first boss,
 let's go upload this mod onto Steam as a Workshop Item!</p>
@@ -1009,7 +998,7 @@ let's go upload this mod onto Steam as a Workshop Item!</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020 - 2025 Aerobox Games
+      Copyright &copy; 2020 - 2026 Aerobox Games
     </div>
   
   

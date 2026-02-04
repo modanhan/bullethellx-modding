@@ -693,6 +693,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ad_hoc_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ad-hoc Structs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -852,10 +875,11 @@
 
 
 <h1 id="entity-component-system">Entity Component System</h1>
-<p>Bullethell X is built around three concepts:</p>
+<p>Bullethell X is built around a standard Entity Component System (ECS),
+in short:</p>
 <ul>
-<li><strong>Entities and Components</strong> which make up the <strong>game state</strong>, and</li>
-<li><strong>Systems</strong>, which define the <strong>game logic</strong>.</li>
+<li><strong>Entities and Components</strong> make up the <strong>game state</strong>, and</li>
+<li><strong>Systems</strong>, define the <strong>game logic</strong>.</li>
 </ul>
 <h2 id="entities">Entities</h2>
 <p>Entities are simply unique IDs. They don’t contain any data by themselves,
@@ -917,6 +941,11 @@ If <code>hp &lt;= 0</code>, destroy the entity.</p>
 <li>Ensure <code>hp</code> can <strong>NOT</strong> exceed <code>maxHP</code></li>
 <li>Apply the updated value</li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is simply an example of how this logic might be implemented.
+The actual implementation of this is not in the scripts but on the engine side.</p>
+</div>
 
 
 
@@ -991,7 +1020,7 @@ If <code>hp &lt;= 0</code>, destroy the entity.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020 - 2025 Aerobox Games
+      Copyright &copy; 2020 - 2026 Aerobox Games
     </div>
   
   

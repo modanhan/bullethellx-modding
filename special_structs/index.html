@@ -12,7 +12,7 @@
         <link rel="prev" href="../structs/">
       
       
-        <link rel="next" href="../async/">
+        <link rel="next" href="../ad_hoc_structs/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -659,9 +659,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#global-function-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      Global Function Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returned-function-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returned Function Example
     </span>
   </a>
   
@@ -679,22 +688,13 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ad-hoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ad-hoc
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ad-hoc">
+    <nav class="md-nav" aria-label="Metadata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#trail" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Trail
+      Examples
     </span>
   </a>
   
@@ -709,6 +709,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ad_hoc_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ad-hoc Structs
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -831,9 +854,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#global-function-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      Global Function Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returned-function-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returned Function Example
     </span>
   </a>
   
@@ -851,22 +883,13 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ad-hoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ad-hoc
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ad-hoc">
+    <nav class="md-nav" aria-label="Metadata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#trail" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Trail
+      Examples
     </span>
   </a>
   
@@ -899,9 +922,16 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">};</span>
 </code></pre></div>
-<p><code>Function</code> is a simple defined struct, however the <code>name</code> field is required to be a <strong><em>global function</em></strong> in Lua!
-This function must have exactly 1 parameter that is the entity ID which the function acts on.</p>
-<h3 id="example">Example</h3>
+<p><code>Function</code> is a simple defined struct, however the <code>name</code> field is required to be a
+<strong><em>referenceable function</em></strong>!
+This function should have exactly 1 parameter that is the entity ID which the function acts on.</p>
+<p>A <strong><em>referenceable function</em></strong> is either</p>
+<ol>
+<li>A global function. In this case, it can be referenced simply using its name.</li>
+<li>A named field in a table returned by a Lua file. In this case, it is referenced
+by <code>folder_name.file_name:field_name</code>.</li>
+</ol>
+<h3 id="global-function-example">Global Function Example</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">function</span><span class="w"> </span><span class="nf">BulletMovement</span><span class="p">(</span><span class="nv">bullet_eid</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">-- ...</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kr">end</span>
@@ -916,7 +946,7 @@ This function must have exactly 1 parameter that is the entity ID which the func
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">-- ...</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;BulletMovement&quot;</span><span class="p">})</span><span class="w">     </span><span class="c1">-- OK  (1)</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;SomeGlobalFunction&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- BAD (2)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;SomeGlobalFunction&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- ??? (2)</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;justALocalFunction&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- BAD (3)</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;DreamFunction&quot;</span><span class="p">})</span><span class="w">      </span><span class="c1">-- BAD (4)</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
@@ -926,10 +956,31 @@ This function must have exactly 1 parameter that is the entity ID which the func
 </code></pre></div>
 <ol>
 <li><code>BulletMovement</code> will be called on <code>eid</code>.</li>
-<li>But <code>SomeGlobalFunction</code> will still be called...</li>
+<li><code>SomeGlobalFunction</code> will still be called...</li>
 <li><code>justALocalFunction</code> is not accessible, game will crash.</li>
 <li><code>DreamFunction</code> does not exist, game will crash.</li>
 <li>Global functions in other files are accessible as long as they're loaded.</li>
+</ol>
+<h3 id="returned-function-example">Returned Function Example</h3>
+<div class="highlight"><span class="filename">spoons/my_mod/special_bullet.lua</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">crazyBullet</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">-- ...</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kr">end</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nv">bulletFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">crazyBullet</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">spoons/my_mod/my_boss.lua</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;crazyBullet&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- BAD (1)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;spoons.my_mod.special_bullet:bulletFunction&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- OK! (2)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Function&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p">{</span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;spoons.my_mod.special_bullet:crazyBullet&quot;</span><span class="p">})</span><span class="w"> </span><span class="c1">-- Bad (3)</span>
+</code></pre></div>
+<ol>
+<li><code>bulletTrajectory</code> is <strong>local</strong> to <code>special_bullet.lua</code> and not visible to <code>my_boss.lua</code>.</li>
+<li>The file is correctly refrenced! All folder names, the file name and field name are correct.</li>
+<li>Even though the defined function is named <code>crazyBullet</code>, this name is invisible.
+The field is <code>bulletFunction</code>.</li>
 </ol>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -944,33 +995,33 @@ the game will most likely lag.</p>
 That’s exactly what <code>Metadata</code> is for.</p>
 <p><code>Metadata</code> is a special component that is <strong><em>not defined in <code>structs.dsl</code></em></strong>! This means they don't use standard Engine APIs.
 Instead, they have</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">--- @param eid integer entity ID</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">--- @param t table metadata</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">createMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="p">)</span>
-</span><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">--- @param eid integer entity ID</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
-</span><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">--- @param eid integer entity ID</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">--- @param t table metadata</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">updateMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="p">)</span>
-</span><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1">--- @param eid integer entity ID</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">destroyMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">--- @param eid integer entity ID</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">--- @param t table metadata</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">createMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="p">)</span>
+</span><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">--- @param eid integer entity ID</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
+</span><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">--- @param eid integer entity ID</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">--- @param t table metadata</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">updateMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="p">)</span>
+</span><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">--- @param eid integer entity ID</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">destroyMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
 </span></code></pre></div>
 <div class="result">
-<div class="highlight"><span class="filename">Sample Usage</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- during initialize</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">createMetadata</span><span class="p">(</span><span class="nv">e</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">attackCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">})</span><span class="w">            </span><span class="c1">-- (1)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">-- during update</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">metadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                       </span><span class="c1">-- (2)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="c1">-- (3)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="py">dt</span><span class="w">           </span><span class="c1">-- (4)</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackCD</span><span class="w"> </span><span class="kr">then</span><span class="w">                </span><span class="c1">-- (5)</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="nf">attack</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                                         </span><span class="c1">-- (6)</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">                             </span><span class="c1">-- (7)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">updateMetadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">meta</span><span class="p">)</span><span class="w">                        </span><span class="c1">-- (8)</span>
+<div class="highlight"><span class="filename">Sample Usage</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">-- during initialize</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">createMetadata</span><span class="p">(</span><span class="nv">e</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">attackCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">})</span><span class="w">            </span><span class="c1">-- (1)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">-- during update</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">metadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                       </span><span class="c1">-- (2)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="c1">-- (3)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">dt</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">      </span><span class="c1">-- (4)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackCD</span><span class="w"> </span><span class="kr">then</span><span class="w">                </span><span class="c1">-- (5)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="nf">attack</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                                         </span><span class="c1">-- (6)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">                             </span><span class="c1">-- (7)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="kr">end</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">updateMetadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">meta</span><span class="p">)</span><span class="w">                        </span><span class="c1">-- (8)</span>
 </code></pre></div>
 <ol>
 <li>Set attack cooldown to 0.2 seconds</li>
@@ -983,53 +1034,49 @@ Instead, they have</p>
 <li>Update metadata, because attack timer value has changed</li>
 </ol>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Together with Function, they are used to achieve arbitrary logic on specific entities!
 This is the single most scriptable and powerful component of <em>Bullethell X</em>'s modding system.</p>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Metadata currently supports up to 64 fields.
-Each Metadata instance is 12.8 KB, making it the largest struct in the game.
-If there are 10,000 entities with Metadata, the memory footprint is 128 MB.</p>
-</div>
-<h2 id="ad-hoc">Ad-hoc</h2>
-<h3 id="trail">Trail</h3>
-<p>Most bullets benefit from a trail visual component, to create this component manually,
-use the <code>Engine.createTrail</code> function:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Create a trail visual</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">--- @param eid integer</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">--- @param detail integer</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">--- @param opacity number</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">--- @param widthScale number | nil if nil, default to 1</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">--- @param cd number | nil if nil, use Engine.dt</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="py">createTrail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">detail</span><span class="p">,</span><span class="w"> </span><span class="nv">opacity</span><span class="p">,</span><span class="w"> </span><span class="nv">widthScale</span><span class="p">,</span><span class="w"> </span><span class="nv">cd</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="result">
-<div class="highlight"><span class="filename">Sample Usage in Helper.fireStandardBulletBoss</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">bulletEid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">createEntity</span><span class="p">()</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Position&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Radius&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Velocity&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Graphic&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Circle&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Bullet&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nv">damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nv">firedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">config</span><span class="p">.</span><span class="py">firedBy</span><span class="p">,</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">})</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FactionEnemy&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="hll"><span class="nv">Engine</span><span class="p">.</span><span class="nf">createTrail</span><span class="p">(</span><span class="nv">bulletEid</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="py">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-</span><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="kr">return</span><span class="w"> </span><span class="nv">bulletEid</span>
+<p>A Metadata is a Lua table with <strong><em>valid</em></strong> fields. A <strong><em>valid</em></strong> field is a named field that is either</p>
+<ol>
+<li>A struct field (int, sf, string, vec2, etc.) <strong><em>except <code>eids</code></em></strong>!!!</li>
+<li>A Lua table with <strong><em>valid</em></strong> fields, i.e. sub-metadtata/nested metadata.</li>
+</ol>
+<h3 id="examples">Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attacker&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">attack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">1.5</span><span class="p">),</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nv">damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;basic attack&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">ability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="nv">shield</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="nv">absorb_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
 </code></pre></div>
+<div class="result">
+<p>This is a valid metadata; <code>Engine.createMetadata(eid, tbl)</code> will work.</p>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><code>detail</code> is at most <code>8</code> and at least <code>1</code>!</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;ability&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;attack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">10</span><span class="p">)}</span>
+</code></pre></div>
+<div class="result">
+<p>This is not a valid metadata; this is a list i.e. fields are not named.</p>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Trail has no accessible/modifiable data! It is merely a visual effect.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;barrage&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">262</span><span class="p">,</span><span class="w"> </span><span class="mi">313</span><span class="p">,</span><span class="w"> </span><span class="mi">623</span><span class="p">,</span><span class="w"> </span><span class="mi">982</span><span class="p">}</span>
+</code></pre></div>
+<div class="result">
+<p>This is not a valid metadata; one of the fields (namely <code>targets</code>) is a list.</p>
 </div>
 
 
@@ -1082,13 +1129,13 @@ use the <code>Engine.createTrail</code> function:</p>
         
         
           
-          <a href="../async/" class="md-footer__link md-footer__link--next" aria-label="Next: AsyncFunctions">
+          <a href="../ad_hoc_structs/" class="md-footer__link md-footer__link--next" aria-label="Next: Ad-hoc Structs">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                AsyncFunctions
+                Ad-hoc Structs
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1105,7 +1152,7 @@ use the <code>Engine.createTrail</code> function:</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020 - 2025 Aerobox Games
+      Copyright &copy; 2020 - 2026 Aerobox Games
     </div>
   
   

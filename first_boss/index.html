@@ -461,18 +461,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-your-mod-folder" class="md-nav__link">
+  <a href="#step-1-download-the-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Create Your Mod Folder
+      Step 1: Download the example
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-write-your-first-boss-script" class="md-nav__link">
+  <a href="#step-2-inspect-boss-script" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Write Your First Boss Script
+      Step 2: Inspect Boss Script
     </span>
   </a>
   
@@ -702,6 +702,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ad_hoc_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ad-hoc Structs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -809,18 +832,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-your-mod-folder" class="md-nav__link">
+  <a href="#step-1-download-the-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Create Your Mod Folder
+      Step 1: Download the example
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-write-your-first-boss-script" class="md-nav__link">
+  <a href="#step-2-inspect-boss-script" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Write Your First Boss Script
+      Step 2: Inspect Boss Script
     </span>
   </a>
   
@@ -872,163 +895,35 @@
 <h1 id="creating-a-boss">Creating a Boss</h1>
 <p>In this section, we’ll create a simple boss, load it into the game,
 make a small change, and then hot-reload it to see the results.</p>
-<h2 id="step-1-create-your-mod-folder">Step 1: Create Your Mod Folder</h2>
-<p>Create a new folder inside <code>bx/mods</code>. This is where all your files will live.
-For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bx/mods/my_mod
-</code></pre></div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Folder names can NOT have spaces (or most special characters).
-We recommend sticking to names using only letters, numbers, and underscore.</p>
-</div>
-<h2 id="step-2-write-your-first-boss-script">Step 2: Write Your First Boss Script</h2>
-<p>Create a new Lua script, e.g.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bx/mods/my_mod/new_boss.lua
-</code></pre></div>
-<p>Paste the following code into the file:</p>
-<div class="copy highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#__codelineno-2-33">33</a></span>
-<span class="normal"><a href="#__codelineno-2-34">34</a></span>
-<span class="normal"><a href="#__codelineno-2-35">35</a></span>
-<span class="normal"><a href="#__codelineno-2-36">36</a></span>
-<span class="normal"><a href="#__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#__codelineno-2-38">38</a></span>
-<span class="normal"><a href="#__codelineno-2-39">39</a></span>
-<span class="normal"><a href="#__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#__codelineno-2-41">41</a></span>
-<span class="normal"><a href="#__codelineno-2-42">42</a></span>
-<span class="normal"><a href="#__codelineno-2-43">43</a></span>
-<span class="normal"><a href="#__codelineno-2-44">44</a></span>
-<span class="normal"><a href="#__codelineno-2-45">45</a></span>
-<span class="normal"><a href="#__codelineno-2-46">46</a></span>
-<span class="normal"><a href="#__codelineno-2-47">47</a></span>
-<span class="normal"><a href="#__codelineno-2-48">48</a></span>
-<span class="normal"><a href="#__codelineno-2-49">49</a></span>
-<span class="normal"><a href="#__codelineno-2-50">50</a></span>
-<span class="normal"><a href="#__codelineno-2-51">51</a></span>
-<span class="normal"><a href="#__codelineno-2-52">52</a></span>
-<span class="normal"><a href="#__codelineno-2-53">53</a></span>
-<span class="normal"><a href="#__codelineno-2-54">54</a></span>
-<span class="normal"><a href="#__codelineno-2-55">55</a></span>
-<span class="normal"><a href="#__codelineno-2-56">56</a></span>
-<span class="normal"><a href="#__codelineno-2-57">57</a></span>
-<span class="normal"><a href="#__codelineno-2-58">58</a></span>
-<span class="normal"><a href="#__codelineno-2-59">59</a></span>
-<span class="normal"><a href="#__codelineno-2-60">60</a></span>
-<span class="normal"><a href="#__codelineno-2-61">61</a></span>
-<span class="normal"><a href="#__codelineno-2-62">62</a></span>
-<span class="normal"><a href="#__codelineno-2-63">63</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;bx.scripts.engine&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;bx.scripts.utils&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;bx.scripts.helpers&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">attack</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">meta</span><span class="p">)</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.45</span><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">rot</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">Vec2</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">speed</span><span class="p">)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nv">Helper</span><span class="p">.</span><span class="nf">fireStandardBulletBoss</span><span class="p">({</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="nv">firedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">eid</span><span class="p">,</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span><span class="nv">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">component</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Position&quot;</span><span class="p">).</span><span class="nv">position</span><span class="p">,</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">        </span><span class="nv">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">speed</span><span class="p">,</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="nv">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.015</span><span class="p">),</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="kr">end</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">component</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BossEntrance&quot;</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="kr">return</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">component</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Health&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">health</span><span class="p">.</span><span class="py">hp</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">        </span><span class="kr">return</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">component</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Meta&quot;</span><span class="p">).</span><span class="nv">meta</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">rot</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">rot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Mat2</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="py">dt</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="nv">Engine</span><span class="p">.</span><span class="py">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">1.5</span><span class="p">))</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">rot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Mat2</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">theta</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">rot</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackCD</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">        </span><span class="nf">attack</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">meta</span><span class="p">)</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41"></a>
-<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">t</span><span class="w"> </span><span class="kr">then</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="py">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">2.1</span><span class="p">)</span>
-<a id="__codelineno-2-46" name="__codelineno-2-46"></a>
-<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="kr">end</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a>
-<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="nv">difficulty</span><span class="p">)</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Helper</span><span class="p">.</span><span class="nf">createStandardBoss</span><span class="p">({</span><span class="w"> </span><span class="nv">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">difficulty</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">attackCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">fpmath</span><span class="p">.</span><span class="nf">clamp</span><span class="p">(</span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">difficulty</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">createComponent</span><span class="p">(</span><span class="nv">e</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">attackCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">attackCD</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">e</span>
-<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="kr">end</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56"></a>
-<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="kr">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">    </span><span class="nv">boss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">        </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;New Boss&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">        </span><span class="nv">create</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">create</span><span class="p">,</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w">        </span><span class="nv">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">update</span><span class="p">,</span>
-<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+<h2 id="step-1-download-the-example">Step 1: Download the example</h2>
+<p>Click here to download
+<a download="download" href="../getting_started_mod.zip">getting_started_mod.zip</a>,
+extract the zip and move the <code>getting_started_mod</code> folder under <code>bx/mods</code>.</p>
+<h2 id="step-2-inspect-boss-script">Step 2: Inspect Boss Script</h2>
+<p>You should now have <code>bx/mods/getting_started_mod/example_boss/boss.lua</code>,
+this is where most of the logic lives!</p>
+<p>Note the modding/scripting system (and game logic) of Bullethell is written in <a href="https://www.lua.org/">Lua</a>!
+No programming experience is necessary and this is a good place to start!</p>
 <h2 id="step-3-load-your-mod-in-game">Step 3: Load Your Mod In-Game</h2>
 <ol>
 <li>Launch the game.</li>
-<li>Open Settings and make sure:</li>
-<li><strong>Local Mods</strong> are <em>ENABLED</em></li>
-<li><strong>Steam Workshop Mods</strong> are <em>DISABLED</em></li>
-<li>Start a singleplayer game. You should see your new boss performing its basic attack pattern.</li>
+<li>Press <em>Backspace</em> to toggle mod settings and make sure:<ul>
+<li><strong>Local Mods</strong> are <em>ENABLED</em>.</li>
+<li><strong>Steam Workshop Mods</strong> are <em>DISABLED</em>.</li>
+<li>You can see these settings on the top left corner.</li>
+</ul>
+</li>
+<li>Start a singleplayer game. You should see your new boss (Orb of Chaos) performing its basic attack pattern.</li>
 </ol>
 <h2 id="step-4-make-a-live-change">Step 4: Make a Live Change</h2>
-<p>Open <code>new_boss.lua</code> again (you can do this while the game is running) and edit line 6:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-6">6</a></span>
-<span class="normal"> </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="gd">- local speed = fp(0.45)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="gi">+ local speed = fp(0.75)</span>
+<p>Open <code>boss.lua</code> (you can do this while the game is running!) and edit line 44:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="gd">-     meta.t = meta.t + dt * fp(0.7)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="gi">+     meta.t = meta.t + dt * fp(1.4)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="step-5-hot-reload-your-mod">Step 5: Hot Reload Your Mod</h2>
-<p>Switch back to the game and press F5. Your boss will now fire bullets at a faster speed.</p>
+<p>Switch back to the game and press <strong>F5</strong> - this hot reloads the scripts.
+Your boss should now have a much higher attack speed.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p><strong>Congratulations!</strong> You’ve just completed the basic Bullethell X modding workflow.</p>
@@ -1107,7 +1002,7 @@ We recommend sticking to names using only letters, numbers, and underscore.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2020 - 2025 Aerobox Games
+      Copyright &copy; 2020 - 2026 Aerobox Games
     </div>
   
   
