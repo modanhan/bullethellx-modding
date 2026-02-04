@@ -14,6 +14,9 @@ extract the zip and move the `getting_started_mod` folder under `bx/mods`.
 You should now have `bx/mods/getting_started_mod/example_boss/boss.lua`,
 this is where most of the logic lives!
 
+Note the modding/scripting system (and game logic) of Bullethell is written in [Lua](https://www.lua.org/)!
+No programming experience is necessary and this is a good place to start!
+
 ## Step 3: Load Your Mod In-Game
 
 1. Launch the game.
@@ -21,7 +24,7 @@ this is where most of the logic lives!
     - **Local Mods** are *ENABLED*.
     - **Steam Workshop Mods** are *DISABLED*.
     - You can see these settings on the top left corner.
-3. Start a singleplayer game. You should see your new boss performing its basic attack pattern.
+3. Start a singleplayer game. You should see your new boss (Orb of Chaos) performing its basic attack pattern.
 
 ## Step 4: Make a Live Change
 

@@ -1,9 +1,10 @@
 # Entity Component System
 
-Bullethell X is built around three concepts:
+Bullethell X is built around a standard Entity Component System (ECS),
+in short:
 
-- **Entities and Components** which make up the **game state**, and
-- **Systems**, which define the **game logic**.
+- **Entities and Components** make up the **game state**, and
+- **Systems**, define the **game logic**.
 
 ## Entities
 
@@ -71,3 +72,7 @@ end
 3. Get each entity's Health component
 4. Ensure `hp` can **NOT** exceed `maxHP`
 5. Apply the updated value
+
+!!! note
+    This is simply an example of how this logic might be implemented.
+    The actual implementation of this is not in the scripts but on the engine side.

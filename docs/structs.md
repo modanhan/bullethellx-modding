@@ -3,7 +3,7 @@
 You’ll find all struct definitions in `structs.dsl`.
 These types are fixed: scripts can’t change their layout or add new structs.
 
-Some examples:
+## Examples
 
 === "#1"
 
@@ -63,5 +63,5 @@ Structs can contain fields of the following types:
 | `vec3`         | 3D vector          | Internal data is decimal numbers
 | `vec4`         | 4D vector          | Internal data is decimal numbers
 | `mat2`         | 2x2 matrix         | Internal data is decimal numbers
-| `mat3`         | 3x3 matrix         | Internal data is decimal numbers
-| `mat4`         | 4x4 matrix         | Internal data is decimal numbers
+| `prng`         | Pseudo-RNG         | Marsaglia Xorshift based RNG
+| `grng`         | Golden-Ratio RNG   | Golden Ratio based low discrepancy sampling

@@ -12,6 +12,7 @@ nav:
     - The Engine Interface: engine_interface.md
     - Struct Definitions: structs.md
     - Special Structs: special_structs.md
+    - Ad-hoc Structs: ad_hoc_structs.md
   - Advanced Techniques: 
     - AsyncFunctions: async.md
 theme:

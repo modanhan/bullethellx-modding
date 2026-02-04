@@ -9,10 +9,17 @@ struct Function {
 };
 ```
 
-`Function` is a simple defined struct, however the `name` field is required to be a ***global function*** in Lua!
-This function must have exactly 1 parameter that is the entity ID which the function acts on.
+`Function` is a simple defined struct, however the `name` field is required to be a
+***referenceable function***!
+This function should have exactly 1 parameter that is the entity ID which the function acts on.
 
-### Example
+A ***referenceable function*** is either
+
+1. A global function. In this case, it can be referenced simply using its name.
+2. A named field in a table returned by a Lua file. In this case, it is referenced
+by `folder_name.file_name:field_name`.
+
+### Global Function Example
 
 ```lua
 
@@ -30,7 +37,7 @@ end
 
 -- ...
 Engine.createComponent(eid, "Function", {name="BulletMovement"})     -- OK  (1)
-Engine.createComponent(eid, "Function", {name="SomeGlobalFunction"}) -- BAD (2)
+Engine.createComponent(eid, "Function", {name="SomeGlobalFunction"}) -- ??? (2)
 Engine.createComponent(eid, "Function", {name="justALocalFunction"}) -- BAD (3)
 Engine.createComponent(eid, "Function", {name="DreamFunction"})      -- BAD (4)
 
@@ -40,10 +47,35 @@ Engine.createComponent(eid, "Function", {name="DreamFunction"})      -- OK  (5)
 ```
 
 1. `BulletMovement` will be called on `eid`.
-2. But `SomeGlobalFunction` will still be called...
+2. `SomeGlobalFunction` will still be called...
 3. `justALocalFunction` is not accessible, game will crash.
 4. `DreamFunction` does not exist, game will crash.
 5. Global functions in other files are accessible as long as they're loaded.
+
+### Returned Function Example
+
+```lua title="spoons/my_mod/special_bullet.lua"
+local function crazyBullet(eid)
+-- ...
+end
+
+return {
+    bulletFunction = crazyBullet,
+}
+```
+
+```lua title="spoons/my_mod/my_boss.lua"
+Engine.createComponent(eid, "Function", {name="crazyBullet"}) -- BAD (1)
+Engine.createComponent(eid, "Function",
+    {name="spoons.my_mod.special_bullet:bulletFunction"}) -- OK! (2)
+Engine.createComponent(eid, "Function",
+    {name="spoons.my_mod.special_bullet:crazyBullet"}) -- Bad (3)
+```
+
+1. `bulletTrajectory` is **local** to `special_bullet.lua` and not visible to `my_boss.lua`.
+2. The file is correctly refrenced! All folder names, the file name and field name are correct.
+3. Even though the defined function is named `crazyBullet`, this name is invisible.
+The field is `bulletFunction`.
 
 !!! important
     `Function` is designed for entities that have truly unique behaviors and are small in number,
@@ -87,7 +119,7 @@ Engine.destroyMetadata = function(eid)
 -- during update
     local meta = Engine.metadata(eid)                       -- (2)
     if not meta.attackTime then meta.attackTime = fp(0) end -- (3)
-    meta.attackTime = meta.attackTime + Engine.dt           -- (4)
+    meta.attackTime = meta.attackTime + Engine.dt(eid)      -- (4)
     if meta.attackTime >= meta.attackCD then                -- (5)
         attack(eid)                                         -- (6)
         meta.attackTime = fp(0)                             -- (7)
@@ -106,55 +138,55 @@ Engine.destroyMetadata = function(eid)
 
 </div>
 
-!!! info
+!!! important
     Together with Function, they are used to achieve arbitrary logic on specific entities!
     This is the single most scriptable and powerful component of *Bullethell X*'s modding system.
 
-!!! info
-    Metadata currently supports up to 64 fields.
-    Each Metadata instance is 12.8 KB, making it the largest struct in the game.
-    If there are 10,000 entities with Metadata, the memory footprint is 128 MB.
+A Metadata is a Lua table with ***valid*** fields. A ***valid*** field is a named field that is either
 
-## Ad-hoc
+1. A struct field (int, sf, string, vec2, etc.) ***except `eids`***!!!
+2. A Lua table with ***valid*** fields, i.e. sub-metadtata/nested metadata.
 
-### Trail
+### Examples
 
-Most bullets benefit from a trail visual component, to create this component manually,
-use the `Engine.createTrail` function:
-
-``` lua  hl_lines="7"
--- Create a trail visual
---- @param eid integer
---- @param detail integer
---- @param opacity number
---- @param widthScale number | nil if nil, default to 1
---- @param cd number | nil if nil, use Engine.dt
-Engine.createTrail = function(eid, detail, opacity, widthScale, cd)
+``` lua
+tbl = {}
+tbl.timer = fp(4)
+tbl.name = "attacker"
+tbl.attack = {
+    cooldown = fp(1.5),
+    damage = fp(5),
+    name = "basic attack",
+}
+tbl.ability = {
+    cooldown = fp(10),
+    shield = {
+        absorb_amount = fp(100),
+        timer = fp(5),
+    },
+}
 ```
 
 <div class="result" markdown>
-
-``` lua title="Sample Usage in Helper.fireStandardBulletBoss" hl_lines="13"
-local bulletEid = Engine.createEntity()
-Engine.createComponent(bulletEid, "Color", ... )
-Engine.createComponent(bulletEid, "Position", ... )
-Engine.createComponent(bulletEid, "Radius", ... )
-Engine.createComponent(bulletEid, "Velocity", ... )
-Engine.createComponent(bulletEid, "Graphic", ... )
-Engine.createComponent(bulletEid, "Circle", {})
-Engine.createComponent(bulletEid, "Bullet", {
-    damage = fp(1),
-    firedBy = config.firedBy,
-})
-Engine.createComponent(bulletEid, "FactionEnemy", {})
-Engine.createTrail(bulletEid, 8, 0.5, 1, Engine.dt * 2)
-return bulletEid
-```
-
+This is a valid metadata; `Engine.createMetadata(eid, tbl)` will work.
 </div>
 
-!!! important
-    `detail` is at most `8` and at least `1`!
+```lua
+tbl = {"ability", fp(5), "attack", fp(10)}
+```
 
-!!! info
-    Trail has no accessible/modifiable data! It is merely a visual effect.
+<div class="result" markdown>
+This is not a valid metadata; this is a list i.e. fields are not named.
+</div>
+
+```lua
+tbl = {
+    name = "barrage",
+    cooldown = fp(12),
+}
+tbl.targets = {15, 262, 313, 623, 982}
+```
+
+<div class="result" markdown>
+This is not a valid metadata; one of the fields (namely `targets`) is a list.
+</div>

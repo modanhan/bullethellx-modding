@@ -2,7 +2,14 @@
 
 Experiment with a few more tweaks to see how they change the gameplay! Here are some ideas to get you started...
 
-## Randomize Radius
+## Adjust Bullet Radius
+
+```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="35 35" }
+-       fire(eid, pos, v * speed, fp(0.02))
++       fire(eid, pos, v * speed, fp(0.04))
+```
+
+## Randomize Bullet Radius
 
 ```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="35 35" }
 -       fire(eid, pos, v * speed, fp(0.02))
@@ -10,10 +17,24 @@ Experiment with a few more tweaks to see how they change the gameplay! Here are 
 +       fire(eid, pos, v * speed, radius)
 ```
 
+## Adjust Multishot
+
+```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="28 28" }
+-    local radialCount = 18
++    local radialCount = 24
+```
+
+## Adjust Bullet Speed
+
+```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="27 27" }
+-    local speed = fp(0.35)
++    local speed = fp(0.55)
+```
+
 ## Next Steps
 
 !!! hint "Challenge"
-    Can you make more changes to create a truly unique attack pattern?
+    Can you make more changes to create a unique attack pattern?
 
 Once you're happy with your customization of the first boss,
 let's go upload this mod onto Steam as a Workshop Item!
