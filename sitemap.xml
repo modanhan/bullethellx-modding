@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/ad_hoc_structs/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/async/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/engine_interface/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/first_boss/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/making_tweaks/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/publishing/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/running_commands/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/scripting_basics/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/special_structs/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/structs/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://modanhan.github.io/bullethellx-modding/sub_metadata/</loc>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://modanhan.github.io/bullethellx-modding/workflow/</loc>
-         <lastmod>2026-02-04</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
 </urlset>

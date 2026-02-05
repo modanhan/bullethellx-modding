@@ -268,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../async/" class="md-tabs__link">
+        <a href="../sub_metadata/" class="md-tabs__link">
           
   
   
@@ -798,6 +798,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../sub_metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sub-metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../async/" class="md-nav__link">
         
   
@@ -923,11 +946,12 @@ For example, an entity cannot have two Health components.</p>
 </ol>
 <h2 id="components">Components</h2>
 <p>Components are <strong>structs</strong> that hold <strong>data</strong>.
-For example, the Health component stores two fields: <code>hp</code> and <code>maxHP</code>.
-Most component definitions can be found in <code>structs.dsl</code>.</p>
-<div class="highlight"><span class="filename">structs.dsl</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Health</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hp</span><span class="p">;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxHP</span><span class="p">;</span>
+For example, the Bullet component stores two fields:
+<code>damage</code>, a decimal number, and <code>firedBy</code>, an entity ID.
+Most component definitions can be found in <code>dsl/structs.dsl</code>.</p>
+<div class="highlight"><span class="filename">dsl/structs.dsl</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Bullet</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">sf</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">eid</span><span class="w"> </span><span class="n">firedBy</span><span class="p">;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">};</span>
 </code></pre></div>
 <h2 id="systems">Systems</h2>
