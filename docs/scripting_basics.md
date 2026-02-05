@@ -27,13 +27,14 @@ Engine.createComponent(eid, "Health", {hp = 3, maxHP = 5}) -- OK (4)
 ## Components
 
 Components are **structs** that hold **data**.
-For example, the Health component stores two fields: `hp` and `maxHP`.
-Most component definitions can be found in `structs.dsl`.
+For example, the Bullet component stores two fields:
+`damage`, a decimal number, and `firedBy`, an entity ID.
+Most component definitions can be found in `dsl/structs.dsl`.
 
-```c++ title="structs.dsl"
-struct Health {
-    int hp;
-    int maxHP;
+```c++ title="dsl/structs.dsl"
+struct Bullet {
+    sf damage;
+    eid firedBy;
 };
 ```
 

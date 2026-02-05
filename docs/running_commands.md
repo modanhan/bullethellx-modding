@@ -10,7 +10,7 @@ Other than how they’re triggered, they are just like regular game scripts.
 
 To get started, create a file called `command.lua` in `bx/mods` and add the following:
 
-```lua title="bx/mods/command.lua"
+```lua { .copy title="bx/mods/command.lua" }
 function Command()
     print("Hello World!")
 end
@@ -22,7 +22,7 @@ Start a game and press **F8**. You should see `Hello World`! printed in the cons
 
 Let’s do something a bit more interesting. Try the following script:
 
-```lua title="bx/mods/command.lua"
+```lua { .copy title="bx/mods/command.lua" }
 require("bx.scripts.engine")
 require("bx.scripts.utils")
 require("lua_glm")
@@ -50,7 +50,7 @@ You can use it to replay the boss fight.
 Commands can be very useful to speed up gameplay iteration.
 The example below lets you quickly load a specific boss and jump straight into a fight:
 
-```lua title="bx/mods/command.lua"
+```lua { .copy title="bx/mods/command.lua" }
 require("bx.scripts.engine")
 require("bx.scripts.utils")
 require("lua_glm")

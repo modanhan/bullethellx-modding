@@ -1,36 +1,54 @@
-
 # AsyncFunction
 
-`AsyncFunction` is almost the same as `Function`.
-They both run a function defined by their names for their entity.
+`AsyncFunction` is very similar to `Function`.
+Both execute a named function for their associated entity.
 
-The difference is `AsyncFunction`
-is scheduled to run in a thread pool, multiple instances of it run in parallel
-so it is generally much faster (about 4x faster on 10 threads) than Function.
+The key difference is that `AsyncFunction` is scheduled on a thread pool.
+Multiple instances can run in parallel, which generally makes it much faster
+(about 4× faster on 10 threads) than a regular Function.
 
-The function however has many requirements to prevent race conditions:
+Because it runs concurrently, `AsyncFunction` has strict requirements to avoid race conditions:
 
-- It can NOT create or destroy any entity or component, EVER!
-- In general, it can only query other's components if other does NOT have an AsyncFunction
-(unless programmer can guarantee that component is not modified during their async function calls)!
-- In general, it can NOT update other's components
-(unless programmer can guarantees no 2 entities modify the same other entity,
-which is possible e.g. there is a 1-1 relationship)!
-- It can query entities.
-- In general, it can query and update self.
+- It must **never** create or destroy entities or components.
 
-If any limitations are breached, there can be race conditions,
-memory can be corrupted and there can be undefined behavior,
-in the worst case the game crashes.
+- In general, it may only read other entities’ components if those entities **do not** have an `AsyncFunction`
+(unless you can guarantee the component will not be modified during async execution).
+
+- In general, it may not modify other entities’ components
+(unless you can guarantee that no two entities will modify the same target, e.g. in a strict 1-to-1 relationship).
+
+- It may query entities.
+
+- It may generally query and update its **own** components
+(e.g. not someone else modifies this component during async execution).
+
+- If it updates metadata, the new metadata must **not** contain more fields than the old one.
+Be especially careful when using sub-metadata features.
+
+If any of these limitations are violated, race conditions may occur.
+This can lead to memory corruption, undefined behavior, desyncing,
+or in the worst case - the game crashes.
+
+!!! warning
+    `AsyncFunction` is an advanced and unsafe feature if used incorrectly.
+
+    If you are unsure about any of the requirements above,
+    or cannot guarantee all of them with full confidence, do not use `AsyncFunction`.
+
+    Code with race conditions often appear to work correctly—sometimes 99% of the time.
+    But when the remaining 1% fails, it is impossible to debug.
+    
+    Ensuring all requirements are met is entirely the programmer’s responsibility;
+    the engine cannot detect or enforce this for you.
 
 !!! note
-    AsyncFunction is designed for e.g. custom bullet trajectories;
-    there are many instances of such bullets, they only need to query/update self.
+    `AsyncFunction` is designed for cases like custom bullet trajectories:
+    many instances run simultaneously and only need to read or update their own state.
 
 ## Example: Exploding bullet
 
-`AsyncFunction` of a bullet that stops moving after X seconds,
-and splits into N sub-bullets in a circular pattern.
+An `AsyncFunction` for a bullet that stops moving after X seconds
+and then splits into N sub-bullets arranged in a circle
 
 ### Approach 1
 

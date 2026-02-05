@@ -16,6 +16,7 @@ nav:
     - Special Structs: special_structs.md
     - Ad-hoc Structs: ad_hoc_structs.md
   - Advanced Techniques: 
+    - Sub-metadata: sub_metadata.md
     - AsyncFunctions: async.md
 theme:
   name: material
