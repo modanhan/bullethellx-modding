@@ -80,7 +80,7 @@ local function loadStage(name, stage)
         local bossEid = boss.create()
         Engine.createComponent(bossEid, "Boss",
             { bossType = name, themeColor = boss.themeColor, bulletColor = boss.bulletColor })
-        Engine.createComponent(bossEid, "CullingThreshold", { m = fp(2) })
+        Engine.createComponent(bossEid, "CullingThreshold", { m = 2) }
         Engine.createComponent(bossEid, "Circle", {})
         Log.d("Spawning boss " .. boss.name .. " (stage " .. stage .. ")")
     end

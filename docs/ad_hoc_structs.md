@@ -27,7 +27,7 @@ Engine.createComponent(bulletEid, "Velocity", ... )
 Engine.createComponent(bulletEid, "Graphic", ... )
 Engine.createComponent(bulletEid, "Circle", {})
 Engine.createComponent(bulletEid, "Bullet", {
-    damage = fp(1),
+    damage = 1,
     firedBy = config.firedBy,
 })
 Engine.createComponent(bulletEid, "FactionEnemy", {})

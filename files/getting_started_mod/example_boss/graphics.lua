@@ -4,7 +4,7 @@ require("bx.scripts.graphics.helper")
 ---@diagnostic disable: need-check-nil, inject-field, undefined-field
 
 local themeColor = Vec4.new(0.32, 0.38, 0.5, 1)
-local bulletColor = themeColor * fp(1.5)
+local bulletColor = themeColor * 1.5
 
 local _ex_boss3_t = 0
 local function boss(eid)
@@ -12,7 +12,7 @@ local function boss(eid)
     local alpha = 1
     local deathAnimation = Engine.component(eid, "DeathAnimation")
     if deathAnimation then
-        alpha = 1 - fpmath.smoothstep(deathAnimation.tbegin, deathAnimation.tend, deathAnimation.t)
+        alpha = 1 - Smoothstep(deathAnimation.tbegin, deathAnimation.tend, deathAnimation.t)
     end
     local meta = Engine.metadata(eid)
     local animationLoop = meta.animationLoop

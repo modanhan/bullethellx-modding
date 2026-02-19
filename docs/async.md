@@ -23,11 +23,11 @@ Because it runs concurrently, `AsyncFunction` has strict requirements to avoid r
 (e.g. not someone else modifies this component during async execution).
 
 - If it updates metadata, the new metadata must **not** contain more fields than the old one.
-Be especially careful when using sub-metadata features.
+Be especially careful when using sub-metadata APIs.
 
 If any of these limitations are violated, race conditions may occur.
 This can lead to memory corruption, undefined behavior, desyncing,
-or in the worst case - the game crashes.
+or crashes. Note in all of these cases, there are no tools available to help debug.
 
 !!! warning
     `AsyncFunction` is an advanced and unsafe feature if used incorrectly.

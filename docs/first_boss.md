@@ -30,9 +30,9 @@ No programming experience is necessary and this is a good place to start!
 
 Open `boss.lua` (you can do this while the game is running!) and edit line 44:
 
-```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="44 44" }
--     meta.t = meta.t + dt * fp(0.7)
-+     meta.t = meta.t + dt * fp(1.4)
+```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="44 44" }
+-     meta.t = meta.t + dt * 0.6
++     meta.t = meta.t + dt * 1.2
 ```
 
 ## Step 5: Hot Reload Your Mod

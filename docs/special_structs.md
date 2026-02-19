@@ -1,5 +1,5 @@
 
-# Special Structs
+# Functions and Metadata
 
 ## Function
 
@@ -118,11 +118,11 @@ Engine.destroyMetadata = function(eid)
 
 -- during update
     local meta = Engine.metadata(eid)                       -- (2)
-    if not meta.attackTime then meta.attackTime = fp(0) end -- (3)
+    if not meta.attackTime then meta.attackTime = 0) end -- (3
     meta.attackTime = meta.attackTime + Engine.dt(eid)      -- (4)
     if meta.attackTime >= meta.attackCD then                -- (5)
         attack(eid)                                         -- (6)
-        meta.attackTime = fp(0)                             -- (7)
+        meta.attackTime = 0)                             -- (7
     end
     Engine.updateMetadata(eid, meta)                        -- (8)
 ```
@@ -151,18 +151,18 @@ A Metadata is a Lua table with ***valid*** fields. A ***valid*** field is a name
 
 ``` lua
 tbl = {}
-tbl.timer = fp(4)
+tbl.timer = 4
 tbl.name = "attacker"
 tbl.attack = {
-    cooldown = fp(1.5),
-    damage = fp(5),
+    cooldown = 1.5,
+    damage = 5,
     name = "basic attack",
 }
 tbl.ability = {
-    cooldown = fp(10),
+    cooldown = 10,
     shield = {
-        absorb_amount = fp(100),
-        timer = fp(5),
+        absorb_amount = 100,
+        timer = 5,
     },
 }
 ```
@@ -172,7 +172,7 @@ This is a valid metadata; `Engine.createMetadata(eid, tbl)` will work.
 </div>
 
 ```lua
-tbl = {"ability", fp(5), "attack", fp(10)}
+tbl = {"ability", 5), "attack", fp(10}
 ```
 
 <div class="result" markdown>
@@ -182,7 +182,7 @@ This is not a valid metadata; this is a list i.e. fields are not named.
 ```lua
 tbl = {
     name = "barrage",
-    cooldown = fp(12),
+    cooldown = 12,
 }
 tbl.targets = {15, 262, 313, 623, 982}
 ```

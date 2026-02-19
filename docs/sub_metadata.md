@@ -30,14 +30,14 @@ Engine.metadata = function(eid, f)
     attack1 = {
         cooldown = 3,
         multishot = 12,
-        aim = fp(5),
+        aim = 5,
     },
     attack2 = {
         name = "dash_strike",
         config = {
-            distance = fp(3.0),
-            speed = fp(10.0),
-            iframe = fp(0.5),
+            distance = 3.0,
+            speed = 10.0,
+            iframe = 0.5,
         },
     },
 }
@@ -54,13 +54,13 @@ Engine.metadata(eid, "attack2.config.speed") -- (8)
 ```
 
 1. Standard metadata query, returns the entire table.
-2. Sub-metadata query, returns `attack1`, i.e. `"{cooldown = 3,multishot = 12,aim = fp(5)}"`.
+2. Sub-metadata query, returns `attack1`, i.e. `"{cooldown = 3,multishot = 12,aim = 5}"`.
 3. Sub-metadata query, returns `"crazy_boss"`.
 4. Sub-metadata query, returns `100`.
 5. Sub-metadata query, returns `3`.
 6. Sub-metadata query, returns `"dash_strike"`.
-7. Sub-metadata query, returns `"{distance = fp(3.0),speed = fp(10.0),iframe = fp(0.5),}"`.
-8. Sub-metadata query, returns `"fp(10.0)"`.
+7. Sub-metadata query, returns `"{distance = 3.0),speed = fp(10.0),iframe = fp(0.5,}"`.
+8. Sub-metadata query, returns `"10.0"`.
 
 </div>
 
@@ -81,7 +81,7 @@ Engine.updateMetadata = function(eid, f, m)
 Engine.updateMetadata(eid, "attack1", {
     cooldown = 999,
     multishot = 12,
-    aim = fp(5),
+    aim = 5,
 })
 assert_eq(Engine.metadata(eid),
     {
@@ -90,14 +90,14 @@ assert_eq(Engine.metadata(eid),
         attack1 = {
             cooldown = 999,
             multishot = 12,
-            aim = fp(5),
+            aim = 5,
         },
         attack2 = {
             name = "dash_strike",
             config = {
-                distance = fp(3.0),
-                speed = fp(10.0),
-                iframe = fp(0.5),
+                distance = 3.0,
+                speed = 10.0,
+                iframe = 0.5,
             },
         },
     }
@@ -113,14 +113,14 @@ assert_eq(Engine.metadata(eid),
         attack1 = {
             cooldown = 999,
             multishot = 1,
-            aim = fp(5),
+            aim = 5,
         },
         attack2 = {
             name = "dash_strike",
             config = {
-                distance = fp(3.0),
-                speed = fp(10.0),
-                iframe = fp(0.5),
+                distance = 3.0,
+                speed = 10.0,
+                iframe = 0.5,
             },
         },
     }
@@ -141,9 +141,9 @@ assert_eq(Engine.metadata(eid),
         attack2 = {
             name = "dash_strike",
             config = {
-                distance = fp(3.0),
-                speed = fp(10.0),
-                iframe = fp(0.5),
+                distance = 3.0,
+                speed = 10.0,
+                iframe = 0.5,
             },
         },
     }
@@ -160,9 +160,9 @@ assert_eq(Engine.metadata(eid),
         attack2 = {
             name = "dash_strike",
             config = {
-                distance = fp(3.0),
-                speed = fp(10.0),
-                iframe = fp(0.5),
+                distance = 3.0,
+                speed = 10.0,
+                iframe = 0.5,
             },
         },
     }
@@ -178,9 +178,9 @@ assert_eq(Engine.metadata(eid),
         attack2 = {
             name = "dash_strike",
             config = {
-                distance = fp(3.0),
-                speed = fp(10.0),
-                iframe = fp(0.5),
+                distance = 3.0,
+                speed = 10.0,
+                iframe = 0.5,
             },
         },
         attack3 = {
@@ -197,9 +197,9 @@ assert_eq(Engine.metadata(eid),
 Let’s revisit our first boss and update only the parts of the metadata that actually change.
 
 ```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="71 71" }
-         meta.t = fp(0)
+         meta.t = 0
      end
-     meta.t = meta.t - dt * fp(0.8)
+     meta.t = meta.t - dt * 0.8
 +    Engine.updateMetadata(eid, "t", meta.t)
 +    Engine.updateMetadata(eid, "animationLoop", meta.animationLoop)
 
