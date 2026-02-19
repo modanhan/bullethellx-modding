@@ -3,7 +3,7 @@
 `AsyncFunction` is very similar to `Function`.
 Both execute a named function for their associated entity.
 
-The key difference is that `AsyncFunction` is scheduled on a thread pool.
+The key difference is that `AsyncFunction` runs in a thread pool.
 Multiple instances can run in parallel, which generally makes it much faster
 (about 4× faster on 10 threads) than a regular Function.
 

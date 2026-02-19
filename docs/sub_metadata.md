@@ -59,7 +59,7 @@ Engine.metadata(eid, "attack2.config.speed") -- (8)
 4. Sub-metadata query, returns `100`.
 5. Sub-metadata query, returns `3`.
 6. Sub-metadata query, returns `"dash_strike"`.
-7. Sub-metadata query, returns `"{distance = 3.0),speed = fp(10.0),iframe = fp(0.5,}"`.
+7. Sub-metadata query, returns `"{distance = 3.0,speed = 10.0,iframe = 0.5,}"`.
 8. Sub-metadata query, returns `"10.0"`.
 
 </div>
@@ -196,7 +196,7 @@ assert_eq(Engine.metadata(eid),
 
 Let’s revisit our first boss and update only the parts of the metadata that actually change.
 
-```diff  { title="bx/mods/my_mod/new_boss.lua" linenums="71 71" }
+```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="71 71" }
          meta.t = 0
      end
      meta.t = meta.t - dt * 0.8

@@ -7,13 +7,14 @@ nav:
     - Modding Workflow: workflow.md
     - Creating a Boss: first_boss.md
     - Customizing the Boss: making_tweaks.md
+    - Customizing Bullets: making_tweaks_bullet.md
     - Running Commands: running_commands.md
     - Publishing the Mod: publishing.md
   - Scripting Basics:
     - Entity Component System: scripting_basics.md
+    - Functions and Metadata: special_structs.md
     - The Engine Interface: engine_interface.md
     - Struct Definitions: structs.md
-    - Functions and Metadata: special_structs.md
     - Ad-hoc Structs: ad_hoc_structs.md
   - Advanced Techniques: 
     - Sub-metadata: sub_metadata.md

@@ -14,8 +14,11 @@ extract the zip and move the `getting_started_mod` folder under `bx/mods`.
 You should now have `bx/mods/getting_started_mod/example_boss/boss.lua`,
 this is where most of the logic lives!
 
-Note the modding/scripting system (and game logic) of Bullethell is written in [Lua](https://www.lua.org/)!
-No programming experience is necessary and this is a good place to start!
+Note the modding/scripting system (and a lot of the game logic itself)
+in Bullethell X is written in [Lua](https://www.lua.org/)!
+
+- If you have some programming experience, Lua is a lightweight language that is easy to pick up!
+- And if you’re new to programming, this is a great place to start!
 
 ## Step 3: Load Your Mod In-Game
 

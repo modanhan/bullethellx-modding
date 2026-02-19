@@ -13,7 +13,7 @@ Experiment with a few more tweaks to see how they change the gameplay! Here are 
 
 ```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="35 35" }
 -       fire(eid, pos, v * speed, 0.02)
-+       local radius = Mix(0.02), fp(0.08), meta.rng:nextFP()
++       local radius = Mix(0.02, 0.08, meta.rng:nextFP())
 +       fire(eid, pos, v * speed, radius)
 ```
 
@@ -36,4 +36,5 @@ Experiment with a few more tweaks to see how they change the gameplay! Here are 
 !!! hint "Challenge"
     Can you make more changes to create a unique attack pattern?
 
-Next, we’ll look at another useful tool for rapidly iterating on your designs.
+Next, we’ll look at how to customize individual bullet trajectories and
+create truly wild attack patterns.

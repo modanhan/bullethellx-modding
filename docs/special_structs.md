@@ -172,7 +172,7 @@ This is a valid metadata; `Engine.createMetadata(eid, tbl)` will work.
 </div>
 
 ```lua
-tbl = {"ability", 5), "attack", fp(10}
+tbl = {"ability", 5.0, "attack", 10}
 ```
 
 <div class="result" markdown>

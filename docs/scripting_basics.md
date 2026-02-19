@@ -38,6 +38,12 @@ struct Bullet {
 };
 ```
 
+See [Struct Definitions](structs.md) for the complete list of fields available in each struct.
+
+Some structs are special and aren’t included in the standard definitions.
+You’ll encounter these next in
+[Functions and Metadata](special_structs.md).
+
 ## Systems
 
 Systems define the game logic. They run every frame and describe how components interact with each other.
