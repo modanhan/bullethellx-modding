@@ -14,7 +14,7 @@
         <link rel="prev" href="../first_boss/">
       
       
-        <link rel="next" href="../running_commands/">
+        <link rel="next" href="../making_tweaks_bullet/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -546,6 +546,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../making_tweaks_bullet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customizing Bullets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../running_commands/" class="md-nav__link">
         
   
@@ -665,6 +688,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../special_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Functions and Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../engine_interface/" class="md-nav__link">
         
   
@@ -694,29 +740,6 @@
   
   <span class="md-ellipsis">
     Struct Definitions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../special_structs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Functions and Metadata
     
   </span>
   
@@ -951,7 +974,7 @@
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-35">35</a></span>
 <span class="normal">  </span>
 <span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="gd">-       fire(eid, pos, v * speed, 0.02)</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="gi">+       local radius = Mix(0.02), fp(0.08), meta.rng:nextFP()</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="gi">+       local radius = Mix(0.02, 0.08, meta.rng:nextFP())</span>
 <a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="gi">+       fire(eid, pos, v * speed, radius)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="adjust-multishot">Adjust Multishot</h2>
@@ -969,7 +992,8 @@
 <p class="admonition-title">Challenge</p>
 <p>Can you make more changes to create a unique attack pattern?</p>
 </div>
-<p>Next, we’ll look at another useful tool for rapidly iterating on your designs.</p>
+<p>Next, we’ll look at how to customize individual bullet trajectories and
+create truly wild attack patterns.</p>
 
 
 
@@ -1021,13 +1045,13 @@
         
         
           
-          <a href="../running_commands/" class="md-footer__link md-footer__link--next" aria-label="Next: Running Commands">
+          <a href="../making_tweaks_bullet/" class="md-footer__link md-footer__link--next" aria-label="Next: Customizing Bullets">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Running Commands
+                Customizing Bullets
               </div>
             </div>
             <div class="md-footer__button md-icon">

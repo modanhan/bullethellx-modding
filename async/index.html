@@ -452,6 +452,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../making_tweaks_bullet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customizing Bullets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../running_commands/" class="md-nav__link">
         
   
@@ -571,6 +594,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../special_structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Functions and Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../engine_interface/" class="md-nav__link">
         
   
@@ -600,29 +646,6 @@
   
   <span class="md-ellipsis">
     Struct Definitions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../special_structs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Functions and Metadata
     
   </span>
   
@@ -935,7 +958,7 @@
 <h1 id="asyncfunction">AsyncFunction</h1>
 <p><code>AsyncFunction</code> is very similar to <code>Function</code>.
 Both execute a named function for their associated entity.</p>
-<p>The key difference is that <code>AsyncFunction</code> is scheduled on a thread pool.
+<p>The key difference is that <code>AsyncFunction</code> runs in a thread pool.
 Multiple instances can run in parallel, which generally makes it much faster
 (about 4× faster on 10 threads) than a regular Function.</p>
 <p>Because it runs concurrently, <code>AsyncFunction</code> has strict requirements to avoid race conditions:</p>
