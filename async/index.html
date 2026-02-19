@@ -622,7 +622,7 @@
   
   
   <span class="md-ellipsis">
-    Special Structs
+    Functions and Metadata
     
   </span>
   
@@ -960,12 +960,12 @@ Multiple instances can run in parallel, which generally makes it much faster
 </li>
 <li>
 <p>If it updates metadata, the new metadata must <strong>not</strong> contain more fields than the old one.
-Be especially careful when using sub-metadata features.</p>
+Be especially careful when using sub-metadata APIs.</p>
 </li>
 </ul>
 <p>If any of these limitations are violated, race conditions may occur.
 This can lead to memory corruption, undefined behavior, desyncing,
-or in the worst case - the game crashes.</p>
+or crashes. Note in all of these cases, there are no tools available to help debug.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><code>AsyncFunction</code> is an advanced and unsafe feature if used incorrectly.</p>

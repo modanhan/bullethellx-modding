@@ -22,7 +22,7 @@
     
     
       
-        <title>Special Structs - Bullethell X Modding Guide</title>
+        <title>Functions and Metadata - Bullethell X Modding Guide</title>
       
     
     
@@ -59,7 +59,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Special Structs - Bullethell X Modding Guide" >
+        <meta  property="og:title"  content="Functions and Metadata - Bullethell X Modding Guide" >
       
         <meta  property="og:description"  content="None" >
       
@@ -75,7 +75,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Special Structs - Bullethell X Modding Guide" >
+        <meta  name="twitter:title"  content="Functions and Metadata - Bullethell X Modding Guide" >
       
         <meta  name="twitter:description"  content="None" >
       
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#special-structs" class="md-skip">
+        <a href="#functions-and-metadata" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Special Structs
+              Functions and Metadata
             
           </span>
         </div>
@@ -638,7 +638,7 @@
   
   
   <span class="md-ellipsis">
-    Special Structs
+    Functions and Metadata
     
   </span>
   
@@ -651,7 +651,7 @@
   
   
   <span class="md-ellipsis">
-    Special Structs
+    Functions and Metadata
     
   </span>
   
@@ -964,7 +964,7 @@
 
 
 
-<h1 id="special-structs">Special Structs</h1>
+<h1 id="functions-and-metadata">Functions and Metadata</h1>
 <h2 id="function">Function</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Function</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
@@ -1063,11 +1063,11 @@ Instead, they have</p>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">-- during update</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">metadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                       </span><span class="c1">-- (2)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="c1">-- (3)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="c1">-- (3</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">dt</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">      </span><span class="c1">-- (4)</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackCD</span><span class="w"> </span><span class="kr">then</span><span class="w">                </span><span class="c1">-- (5)</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="nf">attack</span><span class="p">(</span><span class="nv">eid</span><span class="p">)</span><span class="w">                                         </span><span class="c1">-- (6)</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">                             </span><span class="c1">-- (7)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="nv">meta</span><span class="p">.</span><span class="py">attackTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">                             </span><span class="c1">-- (7</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="kr">end</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nv">Engine</span><span class="p">.</span><span class="nf">updateMetadata</span><span class="p">(</span><span class="nv">eid</span><span class="p">,</span><span class="w"> </span><span class="nv">meta</span><span class="p">)</span><span class="w">                        </span><span class="c1">-- (8)</span>
 </code></pre></div>
@@ -1094,32 +1094,32 @@ This is the single most scriptable and powerful component of <em>Bullethell X</e
 </ol>
 <h3 id="examples">Examples</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attacker&quot;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">attack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mf">1.5</span><span class="p">),</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nv">damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nv">damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;basic attack&quot;</span><span class="p">,</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">ability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="nv">shield</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="nv">absorb_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="nv">absorb_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
 </code></pre></div>
 <div class="result">
 <p>This is a valid metadata; <code>Engine.createMetadata(eid, tbl)</code> will work.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;ability&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;attack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">10</span><span class="p">)}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;ability&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;attack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">10</span><span class="p">}</span>
 </code></pre></div>
 <div class="result">
 <p>This is not a valid metadata; this is a list i.e. fields are not named.</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;barrage&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fp</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nv">cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">tbl</span><span class="p">.</span><span class="py">targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">262</span><span class="p">,</span><span class="w"> </span><span class="mi">313</span><span class="p">,</span><span class="w"> </span><span class="mi">623</span><span class="p">,</span><span class="w"> </span><span class="mi">982</span><span class="p">}</span>
 </code></pre></div>

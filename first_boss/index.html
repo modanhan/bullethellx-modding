@@ -716,7 +716,7 @@
   
   
   <span class="md-ellipsis">
-    Special Structs
+    Functions and Metadata
     
   </span>
   
@@ -965,9 +965,9 @@ No programming experience is necessary and this is a good place to start!</p>
 </ol>
 <h2 id="step-4-make-a-live-change">Step 4: Make a Live Change</h2>
 <p>Open <code>boss.lua</code> (you can do this while the game is running!) and edit line 44:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">bx/mods/my_mod/new_boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="gd">-     meta.t = meta.t + dt * fp(0.7)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="gi">+     meta.t = meta.t + dt * fp(1.4)</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="gd">-     meta.t = meta.t + dt * 0.6</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="gi">+     meta.t = meta.t + dt * 1.2</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="step-5-hot-reload-your-mod">Step 5: Hot Reload Your Mod</h2>
 <p>Switch back to the game and press <strong>F5</strong> - this hot reloads the scripts.
