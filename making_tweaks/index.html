@@ -966,24 +966,24 @@
 <h1 id="customizing-the-boss">Customizing the Boss</h1>
 <p>Experiment with a few more tweaks to see how they change the gameplay! Here are some ideas to get you started...</p>
 <h2 id="adjust-bullet-radius">Adjust Bullet Radius</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="gd">-       fire(eid, pos, v * speed, 0.02)</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="gi">+       fire(eid, pos, v * speed, 0.04)</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="gd">-       fire(eid, pos, v * speed, 0.02, _k + meta.n)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="gi">+       fire(eid, pos, v * speed, 0.04, _k + meta.n)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="randomize-bullet-radius">Randomize Bullet Radius</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-35">35</a></span>
 <span class="normal">  </span>
-<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="gd">-       fire(eid, pos, v * speed, 0.02)</span>
+<span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="gd">-       fire(eid, pos, v * speed, 0.02, _k + meta.n)</span>
 <a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="gi">+       local radius = Mix(0.02, 0.08, meta.rng:nextFP())</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="gi">+       fire(eid, pos, v * speed, radius)</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="gi">+       fire(eid, pos, v * speed, radius, _k + meta.n)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="adjust-multishot">Adjust Multishot</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-28">28</a></span>
 <span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="gd">-    local radialCount = 18</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="gi">+    local radialCount = 24</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="adjust-bullet-speed">Adjust Bullet Speed</h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_mod/example_boss/boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">boss.lua</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-27">27</a></span>
 <span class="normal">  </span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="gd">-    local speed = 0.35</span>
 <a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="gi">+    local speed = 0.55</span>
 </code></pre></div></td></tr></table></div>
