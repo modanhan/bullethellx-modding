@@ -6,7 +6,7 @@ We’ve already customized the boss’s attack behavior
 Right now, bullets travel at a constant velocity set when they are fired.
 Let’s add a function that periodically speeds up and slows down a bullet.
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="10 10" }
+```diff  { title="boss.lua" linenums="10 10" }
 +local function bulletMovement(eid)
 +    local _freq = 1.65
 +    local _amp = 0.05
@@ -22,11 +22,11 @@ Let’s add a function that periodically speeds up and slows down a bullet.
 Next, attach this function to every bullet we spawn,
 along with metadata to store the time variable `t`.
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="33 33" }
+```diff  { title="boss.lua" linenums="33 33" }
     Engine.createComponent(bulletEid, "FactionEnemy", {})
     Engine.createTrail(bulletEid, 5, 0.5, 1.05, 0.06)
 
-+    Engine.createComponent(bulletEid, "AsyncFunction", { name = "example_boss.boss:bullet" })
++    Engine.createComponent(bulletEid, "Function", { name = "example_boss.boss:bullet" })
 +    local meta = { t = k }
 +    Engine.createMetadata(bulletEid, meta)
 end
@@ -34,7 +34,7 @@ end
 
 Finally, expose the function so it can be referenced by name.
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="128 5" }
+```diff  { title="boss.lua" linenums="128 5" }
         themeColor = themeColor,
         bulletColor = bulletColor,
 -    }

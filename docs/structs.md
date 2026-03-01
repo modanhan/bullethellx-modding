@@ -54,10 +54,9 @@ Structs can contain fields of the following types:
 
 | Type Name      | Description        | Technical Details
 | :----------    | :----------------  | :-
-| `int`          | Integer            | 64-bit signed
+| `int`          | Integer            | 64-bit signed integer
 | `sf`           | Decimal number     | Interally a fixed point number with 6 digits of precision
-| `eid`          | Entity ID          | 64-bit signed integer
-| `eids`         | List of Entity ID  | Lua table of 64-bit signed integers
+| `eid`          | Entity ID          | Interally a 64-bit unsigned integer
 | `string`       | String             | At most 64 characters
 | `vec2`         | 2D vector          | Internal data is decimal numbers
 | `vec3`         | 3D vector          | Internal data is decimal numbers

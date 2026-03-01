@@ -43,7 +43,7 @@ end
 ```
 
 This is as a simple cheat that instantly restores all players to full health.
-You can use it to replay the boss fight.
+You can use it to replay boss fights.
 
 ## Loading Stages
 
@@ -87,7 +87,7 @@ local function loadStage(name, stage)
 end
 
 function Command()
-    loadStage("example_boss.stage", 1)
+    loadStage("example_boss.boss", 1)
 end
 
 ```
@@ -95,13 +95,13 @@ end
 This command clears the current encounter and immediately spawns the specified boss.
 
 You can also control which stage the boss is loaded at.
-Higher stages should result in significantly more difficult attack patterns.
+Higher stages should result in the boss having more HP.
 
 For example:
 
 ```lua
 function Command()
-    loadStage("example_boss.stage", 5)
+    loadStage("example_boss.boss", 5)
 end
 ```
 
@@ -109,7 +109,7 @@ or:
 
 ```lua
 function Command()
-    loadStage("example_boss.stage", 10)
+    loadStage("example_boss.boss", 10)
 end
 ```
 
@@ -120,7 +120,7 @@ end
 ```lua
 function Command()
     healAllPlayers()
-    loadStage("example_boss.stage", 10)
+    loadStage("example_boss.boss", 10)
 end
 ```
 

@@ -4,29 +4,29 @@ Experiment with a few more tweaks to see how they change the gameplay! Here are 
 
 ## Adjust Bullet Radius
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="35 35" }
--       fire(eid, pos, v * speed, 0.02)
-+       fire(eid, pos, v * speed, 0.04)
+```diff  { title="boss.lua" linenums="35 35" }
+-       fire(eid, pos, v * speed, 0.02, _k + meta.n)
++       fire(eid, pos, v * speed, 0.04, _k + meta.n)
 ```
 
 ## Randomize Bullet Radius
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="35 35" }
--       fire(eid, pos, v * speed, 0.02)
+```diff  { title="boss.lua" linenums="35 35" }
+-       fire(eid, pos, v * speed, 0.02, _k + meta.n)
 +       local radius = Mix(0.02, 0.08, meta.rng:nextFP())
-+       fire(eid, pos, v * speed, radius)
++       fire(eid, pos, v * speed, radius, _k + meta.n)
 ```
 
 ## Adjust Multishot
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="28 28" }
+```diff  { title="boss.lua" linenums="28 28" }
 -    local radialCount = 18
 +    local radialCount = 24
 ```
 
 ## Adjust Bullet Speed
 
-```diff  { title="getting_started_mod/example_boss/boss.lua" linenums="27 27" }
+```diff  { title="boss.lua" linenums="27 27" }
 -    local speed = 0.35
 +    local speed = 0.55
 ```
